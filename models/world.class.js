@@ -7,6 +7,13 @@ class World {
         new Chicken(),
         new Chicken()
     ];
+    cloud0s = [
+        new Cloud0()
+    ];
+    backgroundObjects = [
+        new BackgroundObject('img/5.Fondo/Capas/3.Fondo3/1.png', 0, 100)
+    ];
+
     // Hilfsvariable canvas, da clearRect ansonsten nicht auf
     // width and height zugreifen kann
     canvas;
@@ -25,13 +32,10 @@ class World {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
         // Die letzten zwei Argumente geben die Größe des Bilds an
-        this.ctx.drawImage(this.character.img, this.character.x, this.character.y, this.character.width, this.character.height);
-
-        // Um auch die enemies erneut zu zeichnen wird mit einer forEach-Schleife
-        // auf das Feld zugegriffen
-        this.enemies.forEach(enemy => {
-            this.ctx.drawImage(enemy.img, enemy.x, enemy.y, enemy.width, enemy.height);
-        })
+        this.addToMap(this.character);
+        this.addObjectsToMap(this.cloud0s);
+        this.addObjectsToMap(this.enemies);
+        this.addObjectsToMap(this.backgroundObjects);
 
         // draw() wird durch requestAnimationFrame immer wieder aufgerufen,
         // so oft es die Grafikkarte hergibt
@@ -42,5 +46,15 @@ class World {
         requestAnimationFrame(function() {
             self.draw();
         })
+    }
+
+    addObjectsToMap(objects) {
+        objects.forEach(o => {
+            this.addToMap(o);
+        })
+    }
+
+    addToMap(mo) {
+        this.ctx.drawImage(mo.img, mo.x, mo.y, mo.width, mo.height);
     }
 }
