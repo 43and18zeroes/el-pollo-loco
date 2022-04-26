@@ -7,11 +7,11 @@ class World {
         new Chicken(),
         new Chicken()
     ];
-    cloud0s = [
-        new Cloud0()
+    clouds = [
+        new Cloud()
     ];
     backgroundObjects = [
-        new BackgroundObject('img/5.Fondo/Capas/3.Fondo3/1.png', 0, 100)
+        new BackgroundObject('img/5.Fondo/Capas/3.Fondo3/1.png', 0, 80)
     ];
 
     // Hilfsvariable canvas, da clearRect ansonsten nicht auf
@@ -33,7 +33,7 @@ class World {
 
         // Die letzten zwei Argumente geben die Größe des Bilds an
         this.addToMap(this.character);
-        this.addObjectsToMap(this.cloud0s);
+        this.addObjectsToMap(this.clouds);
         this.addObjectsToMap(this.enemies);
         this.addObjectsToMap(this.backgroundObjects);
 
