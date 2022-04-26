@@ -11,7 +11,9 @@ class World {
         new Cloud()
     ];
     backgroundObjects = [
-        new BackgroundObject('img/5.Fondo/Capas/3.Fondo3/1.png', 0)
+        new BackgroundObject('img/5.Fondo/Capas/3.Fondo3/1.png', 0),
+        new BackgroundObject('img/5.Fondo/Capas/2.Fondo2/1.png', 0),
+        new BackgroundObject('img/5.Fondo/Capas/1.suelo-fondo1/1.png', 0)
     ];
 
     // Hilfsvariable canvas, da clearRect ansonsten nicht auf
