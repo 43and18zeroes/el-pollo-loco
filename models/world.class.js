@@ -32,10 +32,11 @@ class World {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
         // Die letzten zwei Argumente geben die Größe des Bilds an
+        this.addObjectsToMap(this.backgroundObjects);
         this.addToMap(this.character);
         this.addObjectsToMap(this.clouds);
         this.addObjectsToMap(this.enemies);
-        this.addObjectsToMap(this.backgroundObjects);
+        
 
         // draw() wird durch requestAnimationFrame immer wieder aufgerufen,
         // so oft es die Grafikkarte hergibt
