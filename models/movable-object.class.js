@@ -7,6 +7,8 @@ class MovableObject {
     imageCache = {};
     currentImage = 0;
     speed = 0.15;
+    // Variable für Spiegelung eines Objekts
+    otherDirection = false;
 
     loadImage(path) {
         // Image() muss nicht definiert werden, da es von JS von

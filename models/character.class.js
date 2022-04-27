@@ -3,6 +3,7 @@ class Character extends MovableObject {
     width = 125;
     height = 250;
     y = 180;
+    speed = 10;
 
     IMAGES_WALKING = [
         'img/2.Secuencias_Personaje-Pepe-corrección/2.Secuencia_caminata/W-21.png',
@@ -22,10 +23,23 @@ class Character extends MovableObject {
     }
 
     animate() {
+
         setInterval(() => {
             if (this.world.keyboard.RIGHT) {
+                this.x += this.speed;
+                this.otherDirection = false;
+            }
+        }, 1000 / 60);
 
+        setInterval(() => {
+            if (this.world.keyboard.LEFT) {
+                this.x -= this.speed;
+                this.otherDirection = true;
+            }
+        }, 1000 / 60);
 
+        setInterval(() => {
+            if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {
                 // Walk animation
                 // erreicht this.currentImage den Wert 6 wird i durch die Modulo Rechnung
                 // auf 0 gesetzt: Selbsterstellte Endlosschleife
@@ -34,7 +48,7 @@ class Character extends MovableObject {
                 this.img = this.imageCache[path];
                 this.currentImage++;
             }
-        }, 100);
+        }, 50);
     }
 
     jump() {
