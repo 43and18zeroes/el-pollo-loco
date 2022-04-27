@@ -5,6 +5,7 @@ class MovableObject {
     height = 150;
     width = 100;
     imageCache = {};
+    currentImage = 0;
 
     loadImage(path) {
         // Image() muss nicht definiert werden, da es von JS von
