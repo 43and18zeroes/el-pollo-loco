@@ -13,8 +13,12 @@ class Cloud extends MovableObject {
 
     // Wolken werden mit 60fps bewegt
     animate() {
+        this.moveLeft();
+    }
+
+    moveLeft(){
         setInterval(() => {
-            this.x -= 0.15;
+            this.x -= this.speed;
         }, 1000 / 60);
     }
 
