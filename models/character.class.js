@@ -12,7 +12,7 @@ class Character extends MovableObject {
         'img/2.Secuencias_Personaje-Pepe-corrección/2.Secuencia_caminata/W-25.png',
         'img/2.Secuencias_Personaje-Pepe-corrección/2.Secuencia_caminata/W-26.png'
     ];
-    currentImage = 0;
+    world;
 
     constructor() {
         super().loadImage('img/2.Secuencias_Personaje-Pepe-corrección/2.Secuencia_caminata/W-21.png');
@@ -23,12 +23,17 @@ class Character extends MovableObject {
 
     animate() {
         setInterval(() => {
-            // erreicht this.currentImage den Wert 6 wird i durch die Modulo Rechnung
-            // auf 0 gesetzt: Selbsterstellte Endlosschleife
-            let i = this.currentImage % this.IMAGES_WALKING.length;
-            let path = this.IMAGES_WALKING[i];
-            this.img = this.imageCache[path];
-            this.currentImage++;
+            if (this.world.keyboard.RIGHT) {
+
+
+                // Walk animation
+                // erreicht this.currentImage den Wert 6 wird i durch die Modulo Rechnung
+                // auf 0 gesetzt: Selbsterstellte Endlosschleife
+                let i = this.currentImage % this.IMAGES_WALKING.length;
+                let path = this.IMAGES_WALKING[i];
+                this.img = this.imageCache[path];
+                this.currentImage++;
+            }
         }, 100);
     }
 
