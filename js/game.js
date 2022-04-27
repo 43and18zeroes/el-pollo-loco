@@ -1,5 +1,6 @@
 let canvas;       
 let world;
+let keyboard = new Keyboard();
 
 function init() {
     canvas = document.getElementById('canvas');
@@ -9,3 +10,9 @@ function init() {
 
     console.log('My Character is', world.character);
 }
+
+
+// EventListener für gedrückte Tasten
+document.addEventListener('keypress', (e) => {
+    console.log(e);
+});
