@@ -2,20 +2,7 @@ class World {
 
     // Variablen definiert man in classes ohne let, const oder var
     character = new Character();
-    enemies = [
-        new Chicken(),
-        new Chicken(),
-        new Chicken()
-    ];
-    clouds = [
-        new Cloud()
-    ];
-    backgroundObjects = [
-        new BackgroundObject('img/5.Fondo/Capas/5.cielo_1920-1080px.png', 0),
-        new BackgroundObject('img/5.Fondo/Capas/3.Fondo3/1.png', 0),
-        new BackgroundObject('img/5.Fondo/Capas/2.Fondo2/1.png', 0),
-        new BackgroundObject('img/5.Fondo/Capas/1.suelo-fondo1/1.png', 0)
-    ];
+    level = level1;
 
     // Hilfsvariable canvas, da clearRect ansonsten nicht auf
     // width and height zugreifen kann
@@ -46,10 +33,11 @@ class World {
         this.ctx.translate(this.camera_x, 0);
 
         // Die letzten zwei Argumente geben die Größe des Bilds an
-        this.addObjectsToMap(this.backgroundObjects);
+        this.addObjectsToMap(this.level.backgroundObjects);
+
         this.addToMap(this.character);
-        this.addObjectsToMap(this.clouds);
-        this.addObjectsToMap(this.enemies);
+        this.addObjectsToMap(this.level.clouds);
+        this.addObjectsToMap(this.level.enemies);
         
         this.ctx.translate(-this.camera_x, 0);
 
