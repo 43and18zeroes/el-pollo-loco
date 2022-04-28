@@ -29,6 +29,15 @@ class MovableObject {
         });
     }
 
+    playAnimation(images) {
+        // erreicht this.currentImage den Wert 6 wird i durch die Modulo Rechnung
+        // auf 0 gesetzt: Selbsterstellte Endlosschleife
+        let i = this.currentImage % this.IMAGES_WALKING.length;
+        let path = images[i];
+        this.img = this.imageCache[path];
+        this.currentImage++;
+    }
+
     // Hier wird auf "function" vor "moveUp()" bewusst verzichtet,
     // da es sich bei einer class um etwas relativ Modernes handelt.
     // In moderneren Elementen kann darauf verzichtet werden. 
@@ -36,7 +45,7 @@ class MovableObject {
         console.log('Moving right');
     }
 
-    moveLeft(){
+    moveLeft() {
         setInterval(() => {
             this.x -= this.speed;
         }, 1000 / 60);

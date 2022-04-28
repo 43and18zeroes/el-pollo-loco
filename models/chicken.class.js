@@ -1,6 +1,6 @@
 class Chicken extends MovableObject {
-    height = 60;
-    width = 60;
+    height = 55;
+    width = 55;
 
     // Die y Achse, welche für alle in movable-objects.class.js festgelegt wurde,
     // wird hier überschrieben, damit die chicken etwas besser ins Bild passen
