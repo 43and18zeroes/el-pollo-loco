@@ -1,5 +1,9 @@
 class Endboss extends MovableObject {
 
+    height = 400;
+    width = 344;
+    y = 50;
+
     IMAGES_WALKING = [
         'img/4.Secuencias_Enemy_gigantón-Doña_Gallinota-/2.Ateción-ataque/1.Alerta/G5.png',
         'img/4.Secuencias_Enemy_gigantón-Doña_Gallinota-/2.Ateción-ataque/1.Alerta/G6.png',
@@ -13,7 +17,16 @@ class Endboss extends MovableObject {
 
     constructor(){
         super().loadImage(this.IMAGES_WALKING[0]);
-        this.loadImage(this.IMAGES_WALKING);
-        this.x = 700;
+        this.loadImages(this.IMAGES_WALKING);
+        this.x = 2450;
+        this.animate();
+    }
+
+    animate() {
+        setInterval(() => {
+            // erreicht this.currentImage den Wert 6 wird i durch die Modulo Rechnung
+            // auf 0 gesetzt: Selbsterstellte Endlosschleife
+            this.playAnimation(this.IMAGES_WALKING);
+        }, 200);
     }
 }
