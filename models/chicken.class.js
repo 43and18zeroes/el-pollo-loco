@@ -24,7 +24,9 @@ class Chicken extends MovableObject {
 
 
     animate() {
-        this.moveLeft();
+        setInterval(() => {
+            this.moveLeft();
+        }, 1000 / 60);
 
         setInterval(() => {
             // erreicht this.currentImage den Wert 6 wird i durch die Modulo Rechnung

@@ -14,7 +14,7 @@ class MovableObject {
 
     applyGravity() {
         setInterval(() => {
-            if (this.isAboveGround()) {
+            if (this.isAboveGround() || this.speedY > 0) {
                 this.y -= this.speedY;
                 this.speedY -= this.acceleration;
             }
@@ -57,12 +57,11 @@ class MovableObject {
     // da es sich bei einer class um etwas relativ Modernes handelt.
     // In moderneren Elementen kann darauf verzichtet werden. 
     moveRight() {
-        console.log('Moving right');
+        this.x += this.speed;
     }
 
     moveLeft() {
-        setInterval(() => {
             this.x -= this.speed;
-        }, 1000 / 60);
     }
+
 }
