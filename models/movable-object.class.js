@@ -37,11 +37,14 @@ class MovableObject {
     }
 
     drawFrame(ctx) {
-        ctx.beginPath();
-        ctx.lineWidth = '5';
-        ctx.strokeStyle = 'blue';
-        ctx.rect(this.x, this.y, this.width, this.height);
-        ctx.stroke();
+        // Rahmen werden nur für Instanzen von Character oder Chicken gezeichnet
+        if (this instanceof Character || this instanceof Chicken) {
+            ctx.beginPath();
+            ctx.lineWidth = '5';
+            ctx.strokeStyle = 'blue';
+            ctx.rect(this.x, this.y, this.width, this.height);
+            ctx.stroke();
+        }
     }
 
     /**
@@ -73,7 +76,7 @@ class MovableObject {
     }
 
     moveLeft() {
-            this.x -= this.speed;
+        this.x -= this.speed;
     }
 
 }
