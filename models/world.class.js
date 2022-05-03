@@ -19,10 +19,21 @@ class World {
         this.draw();
         // Zusätzliche Variable zur Übergabe des Keyboards
         this.setWorld();
+        this.checkCollisions();
     }
 
     setWorld() {
         this.character.world = this;
+    }
+
+    checkCollisions() {
+        setInterval(() => {
+            this.level.enemies.forEach( (enemy) => {
+                if (this.character.isColliding(enemy)) {
+                    console.log('Collision with Character', enemy);
+                }
+            });
+        }, 200);
     }
 
     draw() {
