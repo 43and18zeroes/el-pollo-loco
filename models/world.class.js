@@ -11,7 +11,7 @@ class World {
     keyboard;
     camera_x = 0;
     statusBar = new StatusBar();
-    throwableObjects = [new ThrowableObject()];
+    throwableObjects = [];
 
     constructor(canvas, keyboard) {
         this.ctx = canvas.getContext('2d');
@@ -22,22 +22,38 @@ class World {
         // Zusätzliche Variable zur Übergabe des Keyboards
         this.setWorld();
         this.checkCollisions();
+        this.run();
     }
 
     setWorld() {
         this.character.world = this;
     }
 
-    checkCollisions() {
+    run() {
         setInterval(() => {
-            this.level.enemies.forEach( (enemy) => {
-                if (this.character.isColliding(enemy)) {
-                    this.character.hit();
-                    this.statusBar.setPercentage(this.character.energy);
-                }
-            });
+            this.checkCollisions();
+            this.checkThrowObjects();
         }, 200);
     }
+
+
+    checkThrowObjects() {
+        if(this.keyboard.D) {
+            let bottle = new ThrowableObject(this.character.x + 100, this.character.y + 100);
+            this.throwableObjects.push(bottle);
+        }
+    }
+
+
+    checkCollisions() {
+        this.level.enemies.forEach( (enemy) => {
+            if (this.character.isColliding(enemy)) {
+                this.character.hit();
+                this.statusBar.setPercentage(this.character.energy);
+            }
+        });
+    }
+
 
     draw() {
         // Damit beim fortwährenden Aufruf der draw() Funktion (siehe unten)
