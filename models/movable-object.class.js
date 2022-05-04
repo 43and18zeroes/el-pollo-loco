@@ -1,7 +1,4 @@
-class MovableObject {
-    x = 120;
-    y = 280;
-    img;
+class MovableObject extends DrawableObject {
     height = 150;
     width = 100;
     imageCache = {};
@@ -12,7 +9,6 @@ class MovableObject {
     speedY = 0;
     acceleration = 2.5;
     energy = 100;
-
     lastHit = 0;
 
     applyGravity() {
@@ -26,17 +22,6 @@ class MovableObject {
 
     isAboveGround() {
         return this.y < 180;
-    }
-
-    loadImage(path) {
-        // Image() muss nicht definiert werden, da es von JS von
-        // Haus aus zur Verfügung gestellt wird.
-        this.img = new Image();
-        this.img.src = path;
-    }
-
-    draw(ctx) {
-        ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
     }
 
     drawFrame(ctx) {
@@ -75,18 +60,6 @@ class MovableObject {
     // Return true if energy is 0
     isDead() {
         return this.energy == 0;
-    }
-
-    /**
-     * 
-     * @param {Array} arr - ['img/image1.png', 'img/image2.png', ...] 
-     */
-    loadImages(arr) {
-        arr.forEach((path) => {
-            let img = new Image();
-            img.src = path;
-            this.imageCache[path] = img;
-        });
     }
 
     playAnimation(images) {
