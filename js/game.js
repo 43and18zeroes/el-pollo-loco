@@ -35,6 +35,10 @@ window.addEventListener('keydown', (e) => {
         keyboard.SPACE = true;
     }
 
+    if (e.keyCode == 68) {
+        keyboard.D = true;
+    }
+
 });
 
 // EventListener für das Loslassen von Tasten
@@ -59,4 +63,7 @@ window.addEventListener('keyup', (e) => {
         keyboard.SPACE = false;
     }
 
+    if (e.keyCode == 68) {
+        keyboard.D = false;
+    }
 });
