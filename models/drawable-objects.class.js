@@ -6,7 +6,7 @@ class DrawableObject {
     img;
     imageCache = {};
     currentImage = 0;
-    
+
 
     loadImage(path) {
         // Image() muss nicht definiert werden, da es von JS von
@@ -18,6 +18,18 @@ class DrawableObject {
 
     draw(ctx) {
         ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
+    }
+
+
+    drawFrame(ctx) {
+        // Rahmen werden nur für Instanzen von Character oder Chicken gezeichnet
+        if (this instanceof Character || this instanceof Chicken) {
+            ctx.beginPath();
+            ctx.lineWidth = '5';
+            ctx.strokeStyle = 'blue';
+            ctx.rect(this.x, this.y, this.width, this.height);
+            ctx.stroke();
+        }
     }
 
 

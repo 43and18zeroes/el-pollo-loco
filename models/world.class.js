@@ -10,6 +10,7 @@ class World {
     ctx;
     keyboard;
     camera_x = 0;
+    statusBar = new StatusBar();
 
     constructor(canvas, keyboard) {
         this.ctx = canvas.getContext('2d');
@@ -46,6 +47,7 @@ class World {
         // Die letzten zwei Argumente geben die Größe des Bilds an
         this.addObjectsToMap(this.level.backgroundObjects);
 
+        this.addToMap(this.statusBar);
         this.addToMap(this.character);
         this.addObjectsToMap(this.level.clouds);
         this.addObjectsToMap(this.level.enemies);
